@@ -1,1 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<title>Happy Birthday shyrss 💗</title>
 
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+html,body{
+ margin:0;width:100%;height:100%;overflow:hidden;
+ font-family:Georgia,serif;color:#fff;
+ background:#09030b;
+}
+
+body{
+ background:
+ radial-gradient(circle at 20% 10%,#711d59 0,transparent 32%),
+ radial-gradient(circle at 90% 90%,#43206d 0,transparent 35%),
+ linear-gradient(135deg,#09030b,#1b0717,#09030b);
+}
+
+#app{height:100%;width:100%;position:relative;overflow:hidden}
+
+.page{
+ position:absolute;inset:0;display:none;
+ padding:28px 20px;
+ align-items:center;justify-content:center;
+ flex-direction:column;text-align:center;
+ overflow-y:auto;
+}
+
+.page.active{
+ display:flex;
+ animation:pageIn .5s ease;
+}
+
+@keyframes pageIn{
+ from{opacity:0;transform:translateX(35px)}
+ to{opacity:1;transform:translateX(0)}
+}
+
+.glow{
+ position:absolute;width:260px;height:260px;border-radius:50%;
+ background:#ff3e9d;filter:blur(100px);opacity:.17;
+ pointer-events:none;
+}
+
+h1{
+ font-size:clamp(38px,10vw,65px);
+ margin:10px 0;
+ line-height:1.05;
+}
+
+h2{font-size:30px;margin:8px 0 16px}
+
+p{
+ max-width:570px;
+ color:#ead6e5;
+ line-height:1.65;
+}
+
+.card{
+ width:min(540px,94vw);
+ padding:25px;
+ border:1px solid #ffffff1c;
+ background:#ffffff0b;
+ backdrop-filter:blur(18px);
+ border-radius:28px;
+ box-shadow:0 20px 70px #0009;
+}
+
+.btn{
+ border:0;
+ padding:14px 25px;
+ border-radius:30px;
+ color:#fff;
+ font-weight:bold;
+ font-size:16px;
+ margin:8px;
+ background:linear-gradient(135deg,#ff3d94,#9c42ff);
+ box-shadow:0 8px 25px #ff278844;
+ cursor:pointer;
+}
+
+.btn:active{transform:scale(.94)}
+
+.secondary{
+ background:#ffffff12;
+ border:1px solid #ffffff20;
+ box-shadow:none;
+}
+
+.heartBig{
+ font-size:75px;
+ animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+ 50%{transform:scale(1.13)}
+}
+
+.small{font-size:12px;color:#bba5b8}
+
+#music{
+ position:absolute;right:18px;top:18px;z-index:50;
+ width:44px;height:44px;border-radius:50%;
+ border:1px solid #ffffff25;background:#ffffff12;color:white;
+ font-size:18px;
+}
+
+#hearts{
+ position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+
+.float{
+ position:absolute;bottom:-40px;
+ animation:up linear forwards;
+ opacity:.7;
+}
+
+@keyframes up{
+ 0%{transform:translateY(0) rotate(0);opacity:0}
+ 15%{opacity:.8}
+ 100%{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+/* LETTER */
+
+.letter{
+ background:#fff8fb;
+ color:#351226;
+ padding:28px;
+ border-radius:5px;
+ transform:rotate(-1deg);
+ box-shadow:0 20px 50px #0009;
+ width:min(520px,92vw);
+}
+
+.letter p{color:#4b3040}
+
+.signature{
+ font-size:22px;
+ color:#a72f70;
+ margin-top:20px;
+}
+
+/* CAKE */
+
+.cake{
+ position:relative;
+ width:220px;
+ height:150px;
+ margin:20px auto;
+}
+
+.cakeBody{
+ position:absolute;
+ bottom:0;
+ left:15px;
+ width:190px;
+ height:90px;
+ background:linear-gradient(#ff91b9,#e94886);
+ border-radius:15px 15px 25px 25px;
+}
+
+.cream{
+ position:absolute;
+ top:48px;
+ left:15px;
+ width:190px;
+ height:30px;
+ background:#fff4f8;
+ border-radius:50%;
+}
+
+.candle{
+ position:absolute;
+ width:14px;height:48px;
+ background:#fff;
+ top:5px;
+ border-radius:5px;
+}
+
+.c1{left:70px}
+.c2{left:103px}
+.c3{left:136px}
+
+.flame{
+ position:absolute;
+ width:18px;height:25px;
+ background:#ffd34d;
+ border-radius:50% 50% 50% 0;
+ transform:rotate(-45deg);
+ top:-20px;left:-2px;
+ box-shadow:0 0 20px #ffb300;
+}
+
+.flame.off{
+ display:none;
+}
+
+/* QUIZ */
+
+.options{
+ display:grid;
+ gap:11px;
+ margin-top:18px;
+}
+
+.option{
+ width:100%;
+ padding:15px;
+ border-radius:18px;
+ border:1px solid #ffffff20;
+ background:#ffffff09;
+ color:white;
+ cursor:pointer;
+ font-size:15px;
+}
+
+.option.correct{
+ background:#19c87940;
+ border-color:#45ef9b;
+}
+
+.option.wrong{
+ background:#ef315040;
+ border-color:#ff617c;
+}
+
+.result{
+ min-height:30px;
+ margin:15px 0;
+ color:#ff94c6;
+ font-size:19px;
+}
+
+/* MEMORY */
+
+.memoryGrid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:8px;
+ max-width:380px;
+ margin:20px auto;
+}
+
+.memory{
+ aspect-ratio:1;
+ border:0;
+ border-radius:14px;
+ background:linear-gradient(135deg,#ff438f,#7638bd);
+ color:transparent;
+ font-size:24px;
+ cursor:pointer;
+}
+
+.memory.open,
+.memory.matched{
+ color:#fff;
+ background:#ffffff15;
+ border:1px solid #ffffff25;
+}
+
+/* TAP */
+
+.tap{
+ width:160px;height:160px;border-radius:50%;
+ margin:25px auto;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold;
+ font-size:23px;
+ background:radial-gradient(circle,#ff9ac8,#ff3389,#721a9e);
+ box-shadow:0 0 55px #ff368877;
+ cursor:pointer;
+ user-select:none;
+}
+
+.score{
+ font-size:20px;
+ color:#ff9ac8;
+}
+
+/* CATCH */
+
+#catch{
+ width:min(450px,90vw);
+ height:330px;
+ border-radius:25px;
+ border:1px solid #ffffff20;
+ background:#ffffff07;
+ position:relative;
+ overflow:hidden;
+ margin:15px auto;
+}
+
+.catchHeart{
+ position:absolute;
+ font-size:32px;
+ cursor:pointer;
+}
+
+/* RANGE */
+
+input[type=range]{
+ width:90%;
+ accent-color:#ff4b9d;
+}
+
+/* FINAL */
+
+.finalHeart{
+ font-size:90px;
+ animation:pulse 1.2s infinite;
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<button id="music">♫</button>
+<div id="hearts"></div>
+
+
+<!-- 0 READY -->
+
+<section class="page active" id="p0">
+
+ <div class="glow"></div>
+
+ <div class="heartBig">🎂</div>
+
+ <h1>Are You Ready?</h1>
+
+ <p>
+ Something special is waiting for you.<br>
+ A little birthday surprise made with love,
+ memories, games and a tiny bit of mischief. 😏
+ </p>
+
+ <button class="btn" onclick="nextPage(1)">
+  Open My Surprise ❤️
+ </button>
+
+</section>
+
+
+<!-- 1 BIRTHDAY -->
+
+<section class="page" id="p1">
+
+ <div class="glow"></div>
+
+ <div class="heartBig">🎉</div>
+
+ <h1>Happy Birthday! ❤️</h1>
+
+ <div class="card">
+
+  <p>
+   Today is all about you.
+   I hope this year brings you countless reasons
+   to smile, beautiful memories, unexpected happiness
+   and all the love you deserve.
+  </p>
+
+  <p>
+   And since an ordinary birthday wish wasn't enough...
+   I made you this little adventure. 💗
+  </p>
+
+ </div>
+
+ <button class="btn" onclick="nextPage(2)">
+  Read Your Letter 💌
+ </button>
+
+</section>
+
+
+<!-- 2 LETTER -->
+
+<section class="page" id="p2">
+
+ <div class="letter">
+
+  <h2>For You 💌</h2>
+
+  <p>
+   Happy Birthday to someone who makes ordinary moments
+   feel a little more special.
+  </p>
+
+  <p>
+   I hope you know how genuinely amazing you are.
+   Keep smiling, keep dreaming, keep being exactly
+   who you are.
+  </p>
+
+  <p>
+   And honestly... I hope this little page makes you
+   smile at least half as much as you make me smile.
+  </p>
+
+  <p>
+   Here's to another year of memories,
+   laughter, late-night conversations,
+   teasing, chaos and moments we'll never forget. ❤️
+  </p>
+
+  <div class="signature">
+   With lots of love 💗
+  </div>
+
+ </div>
+
+ <button class="btn" onclick="nextPage(3)">
+  There's More 🎁
+ </button>
+
+</section>
+
+
+<!-- 3 CAKE -->
+
+<section class="page" id="p3">
+
+ <div class="card">
+
+  <h2>Make A Wish 🎂</h2>
+
+  <p>Tap the cake to blow out the candles.</p>
+
+  <div class="cake" onclick="blowCake()">
+
+   <div class="candle c1">
+    <div class="flame"></div>
+   </div>
+
+   <div class="candle c2">
+    <div class="flame"></div>
+   </div>
+
+   <div class="candle c3">
+    <div class="flame"></div>
+   </div>
+
+   <div class="cream"></div>
+   <div class="cakeBody"></div>
+
+  </div>
+
+  <div id="cakeMessage" class="result">
+   Make your birthday wish first... ✨
+  </div>
+
+  <button class="btn" id="cakeNext"
+          style="display:none"
+          onclick="nextPage(4)">
+   Let the games begin 😈
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- 4 GAME 1 -->
+
+<section class="page" id="p4">
+
+ <div class="card">
+
+  <div class="small">GAME 1 / 7</div>
+
+  <h2>How Well Do You Know Me? 👀</h2>
+
+  <p id="quizQ"></p>
+
+  <div class="options" id="quizOptions"></div>
+
+  <div class="result" id="quizResult"></div>
+
+  <button class="btn" id="quizNext"
+          style="display:none"
+          onclick="nextPage(5)">
+   Next ❤️
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- 5 GAME 2 MEMORY -->
+
+<section class="page" id="p5">
+
+ <div class="card">
+
+  <div class="small">GAME 2 / 7</div>
+
+  <h2>Memory Match 🧠</h2>
+
+  <p>Find all 8 matching pairs.</p>
+
+  <div class="memoryGrid" id="memoryGrid"></div>
+
+  <div class="score" id="pairs">
+   Pairs: 0 / 8
+  </div>
+
+  <button class="btn" id="memoryNext"
+          style="display:none"
+          onclick="nextPage(6)">
+   Next 💕
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- 6 GAME 3 -->
+
+<section class="page" id="p6">
+
+ <div class="card">
+
+  <div class="small">GAME 3 / 7</div>
+
+  <h2>Pick One 😏</h2>
+
+  <p id="flirtyQ"></p>
+
+  <div class="options" id="flirtyOptions"></div>
+
+  <div class="result" id="flirtyResult"></div>
+
+  <button class="btn" id="flirtyNext"
+          style="display:none"
+          onclick="nextPage(7)">
+   Next 😈
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- 7 GAME 4 -->
+
+<section class="page" id="p7">
+
+ <div class="card">
+
+  <div class="small">GAME 4 / 7</div>
+
+  <h2>Heart Attack ❤️‍🔥</h2>
+
+  <p>
+   Tap as many times as you can in 20 seconds.
+  </p>
+
+  <div class="score">
+
+   Time:
+   <span id="time">20</span>s
+
+   &nbsp; | &nbsp;
+
+   Taps:
+   <span id="taps">0</span>
+
+  </div>
+
+  <div class="tap" id="tap">
+   START
+  </div>
+
+  <button class="btn" id="tapNext"
+          style="display:none"
+          onclick="nextPage(8)">
+   Next 🔥
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- 8 GAME 5 -->
+
+<section class="page" id="p8">
+
+ <div class="card">
+
+  <div class="small">GAME 5 / 7</div>
+
+  <h2>Catch The Hearts 💕</h2>
+
+  <p>
+   Catch 15 hearts before they disappear.
+  </p>
+
+  <div class="score">
+
+   Caught:
+   <span id="caught">0</span> / 15
+
+  </div>
+
+  <div id="catch"></div>
+
+  <button class="btn" id="catchNext"
+          style="display:none"
+          onclick="nextPage(9)">
+   Next 💗
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- 9 GAME 6 -->
+
+<section class="page" id="p9">
+
+ <div class="card">
+
+  <div class="small">GAME 6 / 7</div>
+
+  <h2>How Dangerous Are You? 😈</h2>
+
+  <p>How flirty are you?</p>
+
+  <input type="range"
+         min="0"
+         max="100"
+         value="50"
+         id="flirt">
+
+  <p>How much do you love attention?</p>
+
+  <input type="range"
+         min="0"
+         max="100"
+         value="50"
+         id="attention">
+
+  <p>How jealous can you get?</p>
+
+  <input type="range"
+         min="0"
+         max="100"
+         value="30"
+         id="jealous">
+
+  <button class="btn" onclick="danger()">
+   Reveal My Result 😈
+  </button>
+
+  <div class="result" id="dangerResult"></div>
+
+  <button class="btn" id="dangerNext"
+          style="display:none"
+          onclick="nextPage(10)">
+   Next 👀
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- 10 GAME 7 -->
+
+<section class="page" id="p10">
+
+ <div class="card">
+
+  <div class="small">GAME 7 / 7</div>
+
+  <h2>Truth or Tease 💋</h2>
+
+  <p id="truthQ"></p>
+
+  <div class="options">
+
+   <button class="option" onclick="truth()">
+    Truth 😇
+   </button>
+
+   <button class="option" onclick="tease()">
+    Tease 😏
+   </button>
+
+  </div>
+
+  <div class="result" id="truthResult"></div>
+
+  <button class="btn" id="truthNext"
+          style="display:none"
+          onclick="nextPage(11)">
+   Finish ❤️
+  </button>
+
+ </div>
+
+</section>
+
+
+<!-- 11 FINAL -->
+
+<section class="page" id="p11">
+
+ <div class="glow"></div>
+
+ <div class="finalHeart">
+  💖
+ </div>
+
+ <h1>Happy Birthday ❤️</h1>
+
+ <div class="card">
+
+  <h2>You Made It! 🎉</h2>
+
+  <p>
+   Seven games, one birthday,
+   countless little moments...
+  </p>
+
+  <p>
+   But honestly, the best part wasn't winning.
+   It was getting to spend this little bit of time
+   celebrating you. ❤️
+  </p>
+
+  <h2>Stay amazing. ✨</h2>
+
+  <p>
+   And don't forget to make your birthday wish. 🎂
+  </p>
+
+ </div>
+
+ <button class="btn" onclick="location.reload()">
+  Replay Everything 🔄
+ </button>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* ===============================
+   PAGE SYSTEM
+================================ */
+
+let page=0;
+
+function nextPage(n){
+
+ document.querySelectorAll(".page")
+   .forEach(x=>x.classList.remove("active"));
+
+ document.getElementById("p"+n)
+   .classList.add("active");
+
+ page=n;
+
+ /*
+  Music starts after the user's first tap.
+  This works with mobile browser autoplay rules.
+ */
+ if(n===1){
+  startMusic();
+ }
+}
+
+
+/* ===============================
+   FLOATING HEARTS
+================================ */
+
+function heart(){
+
+ const h=document.createElement("div");
+
+ h.className="float";
+
+ h.innerText=[
+  "❤️",
+  "💗",
+  "💕",
+  "💖",
+  "✨"
+ ][Math.floor(Math.random()*5)];
+
+ h.style.left=Math.random()*100+"%";
+
+ h.style.fontSize=
+  (12+Math.random()*22)+"px";
+
+ h.style.animationDuration=
+  (5+Math.random()*6)+"s";
+
+ document.getElementById("hearts")
+   .appendChild(h);
+
+ setTimeout(()=>{
+  h.remove();
+ },12000);
+}
+
+setInterval(heart,800);
+
+
+/* ===============================
+   MUSIC
+================================ */
+
+/*
+ Put the MP4 file in the SAME folder
+ as this HTML file.
+
+ Exact filename:
+ Ajab_Prem_Ki_Ghazab_Kahani,_2009___Attitude_bio_for_instagram,_Vintage_bollywood_aesthetic,_Old_bollywood_songs.mp4
+*/
+
+const musicFile =
+"Ajab_Prem_Ki_Ghazab_Kahani,_2009___Attitude_bio_for_instagram,_Vintage_bollywood_aesthetic,_Old_bollywood_songs.mp4";
+
+const bgMusic=document.createElement("audio");
+
+bgMusic.id="bgMusic";
+bgMusic.loop=true;
+bgMusic.preload="auto";
+bgMusic.volume=0.65;
+
+const musicSource=document.createElement("source");
+
+musicSource.src=musicFile;
+musicSource.type="audio/mp4";
+
+bgMusic.appendChild(musicSource);
+
+document.body.appendChild(bgMusic);
+
+let musicStarted=false;
+
+function startMusic(){
+
+ if(musicStarted)return;
+
+ bgMusic.play()
+ .then(()=>{
+
+  musicStarted=true;
+
+  document.getElementById("music")
+   .innerText="♫";
+
+ })
+ .catch(()=>{
+
+  /*
+   If browser blocks autoplay,
+   the music button can start it manually.
+  */
+
+ });
+}
+
+
+document.getElementById("music").onclick=()=>{
+
+ if(bgMusic.paused){
+
+  bgMusic.play()
+   .then(()=>{
+
+    musicStarted=true;
+
+    document.getElementById("music")
+     .innerText="♫";
+
+   });
+
+ }else{
+
+  bgMusic.pause();
+
+  document.getElementById("music")
+   .innerText="🔇";
+ }
+};
+
+
+/* ===============================
+   CAKE
+================================ */
+
+let cakeDone=false;
+
+function blowCake(){
+
+ if(cakeDone)return;
+
+ cakeDone=true;
+
+ document.querySelectorAll(".flame")
+   .forEach(x=>x.classList.add("off"));
+
+ document.getElementById("cakeMessage")
+   .innerText=
+   "Wish made! 🎂✨ Happy Birthday! ❤️";
+
+ document.getElementById("cakeNext")
+   .style.display="inline-block";
+
+ startMusic();
+}
+
+
+/* ===============================
+   GAME 1 QUIZ
+================================ */
+
+const quiz=[
+
+ {
+  q:"What makes a moment feel the most romantic?",
+  a:[
+   "A long conversation",
+   "A surprise",
+   "Eye contact 👀",
+   "All of them"
+  ],
+  c:3
+ },
+
+ {
+  q:"Which birthday gift would be the cutest?",
+  a:[
+   "A handwritten letter",
+   "Flowers",
+   "A surprise date",
+   "All of these"
+  ],
+  c:3
+ },
+
+ {
+  q:"What is more likely to make someone blush?",
+  a:[
+   "A compliment",
+   "A stare",
+   "A cute message",
+   "All of these"
+  ],
+  c:3
+ },
+
+ {
+  q:"Who is more likely to cause chaos?",
+  a:[
+   "Me 😇",
+   "You 😈",
+   "Both",
+   "Definitely you"
+  ],
+  c:2
+ }
+
+];
+
+let qi=0;
+
+function loadQuiz(){
+
+ const q=quiz[qi];
+
+ document.getElementById("quizQ")
+  .innerText=q.q;
+
+ const box=
+  document.getElementById("quizOptions");
+
+ box.innerHTML="";
+
+ q.a.forEach((answer,i)=>{
+
+  const b=document.createElement("button");
+
+  b.className="option";
+  b.innerText=answer;
+
+  b.onclick=()=>{
+
+   [...box.children]
+    .forEach(x=>x.disabled=true);
+
+   if(i===q.c){
+
+    b.classList.add("correct");
+
+    document.getElementById("quizResult")
+     .innerText=
+     "Correct! You know me too well ❤️";
+
+   }else{
+
+    b.classList.add("wrong");
+
+    document.getElementById("quizResult")
+     .innerText=
+     "Wrong 😭 I'll forgive you.";
+
+   }
+
+   setTimeout(()=>{
+
+    qi++;
+
+    if(qi<quiz.length){
+
+     document.getElementById("quizResult")
+      .innerText="";
+
+     loadQuiz();
+
+    }else{
+
+     document.getElementById("quizResult")
+      .innerText=
+      "Quiz complete! ❤️";
+
+     document.getElementById("quizNext")
+      .style.display="inline-block";
+    }
+
+   },800);
+
+  };
+
+  box.appendChild(b);
+
+ });
+}
+
+loadQuiz();
+
+
+/* ===============================
+   GAME 2 MEMORY
+================================ */
+
+let symbols=[
+
+ "❤️","❤️",
+ "💋","💋",
+ "💗","💗",
+ "🫦","🫦",
+ "💕","💕",
+ "✨","✨",
+ "🫠","🫠",
+ "🎂","🎂"
+
+];
+
+symbols.sort(()=>Math.random()-.5);
+
+let first=null;
+let second=null;
+let locked=false;
+let matches=0;
+
+symbols.forEach(symbol=>{
+
+ const b=document.createElement("button");
+
+ b.className="memory";
+ b.innerText=symbol;
+
+ b.onclick=()=>{
+
+  if(
+   locked ||
+   b.classList.contains("open") ||
+   b.classList.contains("matched")
+  )return;
+
+  b.classList.add("open");
+
+  if(!first){
+
+   first=b;
+   return;
+  }
+
+  second=b;
+  locked=true;
+
+  if(first.innerText===second.innerText){
+
+   first.classList.add("matched");
+   second.classList.add("matched");
+
+   matches++;
+
+   document.getElementById("pairs")
+    .innerText=
+    "Pairs: "+matches+" / 8";
+
+   first=null;
+   second=null;
+   locked=false;
+
+   if(matches===8){
+
+    document.getElementById("memoryNext")
+     .style.display="inline-block";
+   }
+
+  }else{
+
+   setTimeout(()=>{
+
+    first.classList.remove("open");
+    second.classList.remove("open");
+
+    first=null;
+    second=null;
+    locked=false;
+
+   },700);
+
+  }
+
+ };
+
+ document.getElementById("memoryGrid")
+  .appendChild(b);
+
+});
+
+
+/* ===============================
+   GAME 3 FLIRTY
+================================ */
+
+const flirty=[
+
+ {
+  q:"Which is more attractive?",
+  a:[
+   "Cute smile",
+   "Confidence",
+   "Good voice",
+   "That LOOK 👀"
+  ]
+ },
+
+ {
+  q:"What would make you blush fastest?",
+  a:[
+   "A compliment",
+   "Eye contact",
+   "A hug",
+   "A whispered secret 😏"
+  ]
+ },
+
+ {
+  q:"Perfect late-night date?",
+  a:[
+   "Movie",
+   "Long drive",
+   "Talking for hours",
+   "See where the vibe goes 😏"
+  ]
+ },
+
+ {
+  q:"What's more dangerous?",
+  a:[
+   "A smile",
+   "A stare",
+   "A hug",
+   "Chemistry ❤️‍🔥"
+  ]
+ },
+
+ {
+  q:"Who starts the trouble?",
+  a:[
+   "Me 😇",
+   "You 😈",
+   "Both",
+   "Depends... 👀"
+  ]
+ }
+
+];
+
+let fi=0;
+
+function loadFlirty(){
+
+ const q=flirty[fi];
+
+ document.getElementById("flirtyQ")
+  .innerText=q.q;
+
+ const box=
+  document.getElementById("flirtyOptions");
+
+ box.innerHTML="";
+
+ q.a.forEach(answer=>{
+
+  const b=document.createElement("button");
+
+  b.className="option";
+  b.innerText=answer;
+
+  b.onclick=()=>{
+
+   [...box.children]
+    .forEach(x=>x.disabled=true);
+
+   document.getElementById("flirtyResult")
+    .innerText=
+    "Interesting choice... 👀";
+
+   setTimeout(()=>{
+
+    fi++;
+
+    if(fi<flirty.length){
+
+     document.getElementById("flirtyResult")
+      .innerText="";
+
+     loadFlirty();
+
+    }else{
+
+     document.getElementById("flirtyResult")
+      .innerText=
+      "Okay... I definitely learned something 😏❤️";
+
+     document.getElementById("flirtyNext")
+      .style.display="inline-block";
+    }
+
+   },700);
+
+  };
+
+  box.appendChild(b);
+
+ });
+}
+
+loadFlirty();
+
+
+/* ===============================
+   GAME 4 TAP
+================================ */
+
+let tapping=false;
+let tapCount=0;
+let seconds=20;
+let timer=null;
+
+document.getElementById("tap").onclick=()=>{
+
+ if(!tapping){
+
+  tapping=true;
+  tapCount=0;
+  seconds=20;
+
+  document.getElementById("time")
+   .innerText=seconds;
+
+  document.getElementById("taps")
+   .innerText=0;
+
+  document.getElementById("tap")
+   .innerText="TAP!";
+
+  timer=setInterval(()=>{
+
+   seconds--;
+
+   document.getElementById("time")
+    .innerText=seconds;
+
+   if(seconds<=0){
+
+    clearInterval(timer);
+
+    timer=null;
+
+    tapping=false;
+
+    document.getElementById("tap")
+     .innerText=
+     tapCount+" TAPS! ❤️";
+
+    document.getElementById("tapNext")
+     .style.display="inline-block";
+   }
+
+  },1000);
+
+ }else{
+
+  tapCount++;
+
+  document.getElementById("taps")
+   .innerText=tapCount;
+
+ }
+
+};
+
+
+/* ===============================
+   GAME 5 CATCH
+================================ */
+
+let caught=0;
+let catchTimer=null;
+
+function spawnHeart(){
+
+ if(caught>=15)return;
+
+ const area=
+  document.getElementById("catch");
+
+ const h=document.createElement("div");
+
+ h.className="catchHeart";
+ h.innerText="❤️";
+
+ h.style.left=
+  Math.random()*88+"%";
+
+ h.style.top=
+  Math.random()*82+"%";
+
+ h.onclick=()=>{
+
+  caught++;
+
+  document.getElementById("caught")
+   .innerText=caught;
+
+  h.remove();
+
+  if(caught>=15){
+
+   clearInterval(catchTimer);
+
+   catchTimer=null;
+
+   document.getElementById("catchNext")
+    .style.display="inline-block";
+  }
+
+ };
+
+ area.appendChild(h);
+
+ setTimeout(()=>{
+
+  if(h.parentNode)
+   h.remove();
+
+ },1300);
+}
+
+catchTimer=setInterval(spawnHeart,700);
+
+
+/* ===============================
+   GAME 6 DANGER
+================================ */
+
+function danger(){
+
+ const a=
+  +document.getElementById("flirt").value;
+
+ const b=
+  +document.getElementById("attention").value;
+
+ const c=
+  +document.getElementById("jealous").value;
+
+ const avg=(a+b+c)/3;
+
+ let text;
+
+ if(avg<30)
+
+  text="Sweet & innocent 😇";
+
+ else if(avg<55)
+
+  text="Cute but suspicious 👀";
+
+ else if(avg<75)
+
+  text="Certified trouble 😏";
+
+ else
+
+  text="ABSOLUTELY DANGEROUS 😈🔥";
+
+ document.getElementById("dangerResult")
+  .innerText=text;
+
+ document.getElementById("dangerNext")
+  .style.display="inline-block";
+}
+
+
+/* ===============================
+   GAME 7 TRUTH / TEASE
+================================ */
+
+const truthQuestions=[
+
+ "What's one thing you find ridiculously attractive? 👀",
+
+ "What's something you've wanted to say but never did?",
+
+ "What kind of moment gives you butterflies?",
+
+ "What's a compliment you'd be too shy to say face-to-face?",
+
+ "If I suddenly got really close to you, what would you do? 😏",
+
+ "What's one thing about me that always makes you smile?"
+
+];
+
+let ti=0;
+
+document.getElementById("truthQ")
+ .innerText=truthQuestions[ti];
+
+
+function truth(){
+
+ document.getElementById("truthResult")
+  .innerText=
+  "Then answer it honestly... no escaping. 👀";
+
+ advanceTruth();
+}
+
+
+function tease(){
+
+ document.getElementById("truthResult")
+  .innerText=
+  "Ohhh, choosing chaos instead? 😏";
+
+ advanceTruth();
+}
+
+
+function advanceTruth(){
+
+ setTimeout(()=>{
+
+  ti++;
+
+  if(ti<truthQuestions.length){
+
+   document.getElementById("truthQ")
+    .innerText=truthQuestions[ti];
+
+   document.getElementById("truthResult")
+    .innerText="";
+
+  }else{
+
+   document.getElementById("truthResult")
+    .innerText=
+    "Okay... enough secrets for one night 😏❤️";
+
+   document.getElementById("truthNext")
+    .style.display="inline-block";
+  }
+
+ },700);
+}
+
+</script>
+
+</body>
+</html>
